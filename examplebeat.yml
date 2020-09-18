@@ -4,7 +4,37 @@
 
 examplebeat:
   # Defines how often an event is sent to the output
-  period: 1s
+  schedule:
+    - command: python
+      period: 2s
+      args: "/home/student/go/src/github.com/PavelStupnitsky/examplebeat/scripts/python/script1.py"
+      scheduletype: interval
+
+    - command: bash
+      period: 3s
+      args: "/home/student/go/src/github.com/PavelStupnitsky/examplebeat/scripts/bash/script1"
+      scheduletype: interval
+
+    - command: sh
+      period: 5s
+      args: "/home/student/go/src/github.com/PavelStupnitsky/examplebeat/scripts/sh/script1"
+      scheduletype: interval
+
+    - command: python
+      period: "1-59/5 * * * *"
+      args: "/home/student/go/src/github.com/PavelStupnitsky/examplebeat/scripts/python/script2.py"
+      scheduletype: cron
+
+    - command: bash
+      period: "2-59/3 12-13 * * *"
+      args: "/home/student/go/src/github.com/PavelStupnitsky/examplebeat/scripts/bash/script1"
+      scheduletype: cron
+
+    - command: sh
+      period: "3,13,23,33,43,53 12-13 * * *"
+      args: "/home/student/go/src/github.com/PavelStupnitsky/examplebeat/scripts/sh/script1"
+      scheduletype: cron
+
 
 #================================ General =====================================
 
